@@ -48,14 +48,14 @@ public class Main {
         response = httpClient.execute(requestTwo); // отправляем 2-ой запрос
 
         String body = new String(response.getEntity().getContent()
-            .readAllBytes(), StandardCharsets.UTF_8); // читаем тело ответа
+            .readAllBytes(), StandardCharsets.UTF_8); // читаем тело ответа на 2-ой запрос
 
         String nameOfFile = namingToFile(post.getUrl()); // получаем имя файла NASA
 
         // создаем директории для сохранения файла NASA и файла с логами
         String parentFolderOne = "D://NASA"; // путь к папке, где хотим создать директории
         List<String> directoriesOne = Arrays.asList("images", "temp"); // список создаваемых директорий
-        for (String dir : directoriesOne) { // cоздаем дирректории согласно списка
+        for (String dir : directoriesOne) { // cоздаем директории согласно списка
             createDir(parentFolderOne, dir);
         }
 
@@ -70,8 +70,7 @@ public class Main {
         // записываем информацию в файл на основе данных с сайта NASA
         recorderToFile(parentFolderTwo, nameOfFile, body);
 
-
-        recorderLog("D://NASA//temp//temp.txt"); // записываем информацию из лога ф файл
+        recorderLog("D://NASA//temp//temp.txt"); // записываем информацию из лога в файл
     }
 
     // метод добавления пользовательского ключа к URL-адресу
